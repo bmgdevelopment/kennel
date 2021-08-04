@@ -14,9 +14,25 @@ textarea {
   line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
   font-family: "Patua One", serif;
   letter-spacing: 2px;
+  /* margin-left: 10%; */
+  display: flex;
+  justify-content: space-around;
+}
+.h1__title {
+ font-size: 40px;
+ margin-bottom: -10px;
+ font-family: "Patua One", serif;
+ letter-spacing: 2px;
+ margin-left: 10%;
+
+}
+
+.heading__text {
+  letter-spacing: 2px;
+  margin-left: 10%;
 }
 
 p {
@@ -32,3 +48,8 @@ strong {
 address {
   margin: 0 0 1.5em;
 }
+
+/* 
+article {
+  border: 2px solid green;
+} */
