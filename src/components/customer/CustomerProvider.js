@@ -24,7 +24,7 @@ export const CustomerProvider = (props) => {
 
     return (
         <CustomerContext.Provider value = {
-            {customers, getCustomers, addCustomer}
+            {customers, getCustomers, addCustomer} //object including info in export
         }>
             {props.children}
         </CustomerContext.Provider>

@@ -24,7 +24,7 @@ export const EmployeeProvider = (props) => {
 
     return (
         <EmployeeContext.Provider value = {
-            {employees, getEmployees, addEmployee}
+            {employees, getEmployees, addEmployee} //object including info in export
         }>
             {props.children}
         </EmployeeContext.Provider>

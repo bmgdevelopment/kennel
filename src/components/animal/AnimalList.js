@@ -4,9 +4,9 @@ import "./Animal.css"
 
 export const AnimalList = () => {
   // This state changes when `getAnimals()` is invoked below
-  const { animals, getAnimals } = useContext(AnimalContext)
+  const { animals, getAnimals } = useContext(AnimalContext) //the function using the AnimalContext deconstructs the arguments content/context
 
-  //useEffect - reach out to the world for something
+  //useEffect hook - reach out to the world for something; listens for custom events
   useEffect(() => {
     console.log("AnimalList: useEffect - getAnimals")
     getAnimals()

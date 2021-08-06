@@ -4,8 +4,9 @@ import "./Employee.css"
 
 
 export const EmployeeList = () => {
-    const { employees, getEmployees } = useContext(EmployeeContext)
+    const { employees, getEmployees } = useContext(EmployeeContext) //the function using the EmployeeContext deconstructs the arguments content/context
 
+    //useEffect hook - reach out to the world for something; listens for custom events
     useEffect(() => {
         console.log("AnimalList: useEffect - getEmployees")
         getEmployees()

@@ -4,8 +4,9 @@ import "./Customer.css"
 
 
 export const CustomerList = () => {
-    const { customers, getCustomers } = useContext(CustomerContext)
+    const { customers, getCustomers } = useContext(CustomerContext) //the function using the CustomerContext deconstructs the arguments content/context
 
+      //useEffect hook - reach out to the world for something; listens for custom events
     useEffect(() => {
         console.log("AnimalList: useEffect - getCustomers")
         getCustomers()

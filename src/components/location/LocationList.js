@@ -4,7 +4,7 @@ import "./Location.css"
 
 
 export const LocationList = () => {
-    const { locations, getLocations } = useContext(LocationContext)
+    const { locations, getLocations } = useContext(LocationContext) //the function using the LocationContext deconstructs the arguments content/context
 
     useEffect(() => {
         console.log("AnimalList: useEffect - getLocations")
