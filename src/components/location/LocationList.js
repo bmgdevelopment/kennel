@@ -20,7 +20,7 @@ export const LocationList = () => {
                         <div className="location__name">
                             Name: { location.name }
                         </div>
-                        <div className="Location__address">
+                        <div className="location__address">
                             Location: {location.address }
                         </div>
                     </div>

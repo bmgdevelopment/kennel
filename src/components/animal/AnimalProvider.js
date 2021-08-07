@@ -1,7 +1,5 @@
 import React, { useState, createContext } from "react" //This code imports the main React library, and two functions that it exports.
 
-
-
 // The context is imported and used by individual components that 
 // need data.
 // A context stores a certain kind of data to be used in your application. 
@@ -15,7 +13,7 @@ export const AnimalProvider = (props) => {
 
 
     const getAnimals = () => {
-        return fetch("http://localhost:8088/animals?_expand=location")
+        return fetch("http://localhost:8088/animals?_expand=customer&_expand=location")
         .then(res => res.json())
         .then(setAnimals) // similar action to .then((res) => setAnimals(res))
     }
