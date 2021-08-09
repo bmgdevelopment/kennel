@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from "react"
 import { CustomerContext } from "./CustomerProvider"
 import "./Customer.css"
@@ -8,7 +9,7 @@ export const CustomerList = () => {
 
       //useEffect hook - reach out to the world for something; listens for custom events
     useEffect(() => {
-        console.log("AnimalList: useEffect - getCustomers")
+        console.log("CustomerList: useEffect - getCustomers")
         getCustomers()
     }, [])
 
