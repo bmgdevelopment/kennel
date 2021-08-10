@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from "react"
 import { EmployeeContext } from "./EmployeeProvider"
 import "./Employee.css"
@@ -17,7 +18,7 @@ export const EmployeeList = () => {
         {
             employees.map(employee => {
                 return (
-                    <div className="employee" id={`employee--${employee.id}`}>
+                    <div className="employee" id={`employee--${employee.id}`} key={employee.id}>
                         <div className="employee__name">
                             Name: { employee.name }
                         </div>

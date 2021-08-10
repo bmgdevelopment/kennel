@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from "react"
 import { LocationContext } from "./LocationProvider"
 import "./Location.css"
@@ -16,7 +17,7 @@ export const LocationList = () => {
         {
             locations.map(location => {
                 return (
-                    <div className="location" id={`location--${location.id}`}>
+                    <div className="location" id={`location--${location.id}`} key={location.id}>
                         <div className="location__name">
                             Name: { location.name }
                         </div>

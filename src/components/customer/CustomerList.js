@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from "react"
 import { CustomerContext } from "./CustomerProvider"
 import "./Customer.css"
@@ -11,6 +10,7 @@ export const CustomerList = () => {
     useEffect(() => {
         console.log("CustomerList: useEffect - getCustomers")
         getCustomers()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
@@ -18,7 +18,7 @@ export const CustomerList = () => {
         {
             customers.map(customer => {
                 return (
-                    <div className="customer" id={`customer--${customer.id}`}>
+                    <div className="customer" id={`customer--${customer.id}`} key={customer.id}>
                         <div className="customer__name">
                             Name: { customer.name }
                         </div>
