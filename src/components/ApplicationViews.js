@@ -4,8 +4,10 @@ import { LocationProvider } from "./location/LocationProvider"
 import { LocationList } from "./location/LocationList"
 import {AnimalProvider} from "./animal/AnimalProvider"
 import { AnimalList } from "./animal/AnimalList"
+import { AnimalForm } from "./animal/AnimalForm"
 import { EmployeeProvider } from "./employee/EmployeeProvider"
 import { EmployeeList } from "./employee/EmployeeList"
+import { EmployeeForm } from "./employee/EmployeeForm"
 import { CustomerProvider } from "./customer/CustomerProvider"
 import { CustomerList } from "./customer/CustomerList"
 import { Home } from "./Home"
@@ -27,29 +29,58 @@ export const ApplicationViews = () => {
                 </Route>
             </LocationProvider>
 
-            {/* Render the animal list when http://localhost:8088/employee */}
+            {/* 🤓 CHANGE HERE Render the create location form when http://localhost:8088/locations/create */}
+            <LocationProvider>
+                <Route  exact path="/locations/create">
+                    <LocationList /> 
+                </Route>
+            </LocationProvider>
+
+            {/* Render the employee list when http://localhost:8088/employee */}
             <EmployeeProvider>
-                <Route path="/employees">
+                <Route exact path="/employees">
                 <br/><h2>Current Employees</h2>
                     <EmployeeList />
                 </Route>
+
+            {/* Render the add employee form when http://localhost:8088/employees/create */}
+                    <LocationProvider>
+                    <Route exact path="/employees/create">
+                        <EmployeeForm />
+                    </Route>
+                    </LocationProvider>
             </EmployeeProvider>
 
             {/* Render the animal list when http://localhost:8088/animals */}
             <AnimalProvider>
-                <Route path="/animals">
+                <Route exact path="/animals">
                 <br/><h2>Current Animals</h2>
+                <article className="animals">
                     <AnimalList />
+                </article>
                 </Route>
             </AnimalProvider>
+            
+            {/* Render the add animal form when http://localhost:8088/animals/create */}
+            <AnimalProvider>
+                <CustomerProvider>
+                    <LocationProvider>
+                    <Route exact path="/animals/create">
+                        <AnimalForm />
+                    </Route>
+                    </LocationProvider>
+                </CustomerProvider>
+            </AnimalProvider>
+            
 
-            {/* Render the animal list when http://localhost:8088/animals */}
+            {/* Render the customer list when http://localhost:8088/customers */}
             <CustomerProvider>
                 <Route path="/customers">
                 <br/><h2>Current Customers</h2>
                     <CustomerList />
                 </Route>
             </CustomerProvider>
+            
         </>
     )
 }

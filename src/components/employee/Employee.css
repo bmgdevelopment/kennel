@@ -10,3 +10,54 @@
       padding: 1em;
       border: 1px solid goldenrod;
   }
+
+  .employeesDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    order: -1;
+    margin-left: 15%;
+    margin-right: 15%;
+    /* border: 2px solid blue; */
+  }
+
+  .employeeBtnDiv {
+    display: flex;
+    justify-content: center;
+    order: 1;
+    margin-top: 2%;
+    /* border: 2px solid green; */
+  }
+
+  .employeeForm {
+    border: 2px solid rgb(223, 158, 17);
+    margin: 8% 15%;
+    padding-bottom: 2%;
+    padding-right: 10%;
+    padding-left: 10%;
+  }
+
+  .btn-primary {
+    margin-top: 4%;
+    background-color: goldenrod;
+  }
+
+  .form-control {
+    border: rgb(128, 128, 128);
+    margin-left: 2px;
+  }
+
+  fieldset {
+    border: rgb(128, 128, 128);
+  }
+
+  .h2_form_div {
+    background-color: goldenrod;
+    margin-left: -20.5%;
+    margin-right: -20.5%;
+    margin-top: -5%;
+    margin-bottom: 4%;
+    padding-top: 1px;
+    padding-bottom: 0.5px;
+    color: white;
+  }
