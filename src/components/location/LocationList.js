@@ -1,11 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from "react"
 import { LocationContext } from "./LocationProvider"
+import { useHistory } from "react-router-dom"
 import "./Location.css"
 
 
 export const LocationList = () => {
     const { locations, getLocations } = useContext(LocationContext) //the function using the LocationContext deconstructs the arguments content/context
+    const history = useHistory()
 
     useEffect(() => {
         console.log("LocationList: useEffect - getLocations")
@@ -13,6 +15,16 @@ export const LocationList = () => {
     }, [])
 
     return (
+        <>
+        <div className="locationBtnDiv">
+            <button onClick={
+                () => history.push("/locations/create")
+            }>
+                Add Location
+            </button>
+        </div>
+
+        <div className="locationsDiv">
         <section className="locations">
         {
             locations.map(location => {
@@ -29,5 +41,7 @@ export const LocationList = () => {
             })
         }
         </section>
+        </div>
+    </>
     )
 }

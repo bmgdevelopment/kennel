@@ -2,6 +2,7 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { LocationProvider } from "./location/LocationProvider"
 import { LocationList } from "./location/LocationList"
+import { LocationForm } from "./location/LocationForm"
 import {AnimalProvider} from "./animal/AnimalProvider"
 import { AnimalList } from "./animal/AnimalList"
 import { AnimalForm } from "./animal/AnimalForm"
@@ -23,16 +24,16 @@ export const ApplicationViews = () => {
 
             {/* Render the location list when http://localhost:8088/locations */}
             <LocationProvider>
-                <Route  path="/locations">
+                <Route  exact path="/locations">
                 <br/><h2>Current Locations</h2>
                     <LocationList />
                 </Route>
             </LocationProvider>
 
-            {/* 🤓 CHANGE HERE Render the create location form when http://localhost:8088/locations/create */}
+            {/* Render the create location form when http://localhost:8088/locations/create */}
             <LocationProvider>
                 <Route  exact path="/locations/create">
-                    <LocationList /> 
+                    <LocationForm /> 
                 </Route>
             </LocationProvider>
 
