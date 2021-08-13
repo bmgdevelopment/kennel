@@ -16,6 +16,7 @@ export const LocationList = () => {
 
     return (
         <>
+         <div className="wrapperDiv">
         <div className="locationBtnDiv">
             <button onClick={
                 () => history.push("/locations/create")
@@ -25,7 +26,6 @@ export const LocationList = () => {
         </div>
 
         <div className="locationsDiv">
-        <section className="locations">
         {
             locations.map(location => {
                 return (
@@ -40,7 +40,7 @@ export const LocationList = () => {
                 )
             })
         }
-        </section>
+        </div>
         </div>
     </>
     )

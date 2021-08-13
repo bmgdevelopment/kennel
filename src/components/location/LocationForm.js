@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState} from "react"
+import React, { useContext, useState} from "react"
 import { LocationContext } from "../location/LocationProvider"
 import { useHistory } from "react-router-dom"
 import "./Location.css"
@@ -13,7 +13,7 @@ export const LocationForm = () => {
     
     const history = useHistory()
 
-    useEffect(() => {}, []) // 🤓 is this needed?
+    // useEffect(() => {}, []) // 🤓 is this needed?
 
     const handleControlledInputChange = (e) => {
         const newLocation = { ...location }

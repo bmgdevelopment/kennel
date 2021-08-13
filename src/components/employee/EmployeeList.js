@@ -18,6 +18,7 @@ export const EmployeeList = () => {
 
     return (
         <>
+        <div className="wrapperDiv">
         <div className="employeeBtnDiv">
         <button onClick={
           () => history.push("/employees/create")
@@ -43,6 +44,7 @@ export const EmployeeList = () => {
             })
         }
         </section>
+        </div>
         </div>
         </>
     )

@@ -1,3 +1,8 @@
+.wrapperDiv {
+  display: flex;
+  flex-direction: column;
+}
+
 .locations {
     display: flex;
     flex-wrap: wrap;
