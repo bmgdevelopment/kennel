@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import { AnimalContext } from "./AnimalProvider"
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import "./Animal.css"
 
 export const AnimalList = () => {
@@ -8,21 +8,45 @@ export const AnimalList = () => {
   const { animals, getAnimals } = useContext(AnimalContext) //the function using the AnimalContext deconstructs the arguments content/context
   
   
-  const history = useHistory()
   // useHistory() is a hook function provided by react-router-dom. It 
   // allows you to immediately use a push() method which you can use to change 
   // the URL. Be sure to import it at the top of the document.
-
-
+  
+  
   //useEffect hook - reach out to the world for something; listens for custom events
   useEffect(() => { 
     console.log("AnimalList: useEffect - getAnimals")
     getAnimals()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []) //The dependency array. Logic within functions only occur when a function is invoked. Within a React component, useEffect is a function. After the return, useEffect is automatically invoked and since the dependency array is empty, it only runs the first time the component renders.
+  const history = useHistory()
 
   return (
     <>
+      <div className="buttonDiv">
+      <button onClick={() => history.push("/animals/create")}>
+          Make Reservation
+      </button>
+      </div>
+
+      <div className="animalsDiv">
+                {
+                    animals.map(animal => {
+                      return ( 
+                      <Link to={`/animals/detail/${animal.id}`} key={animal.id}>
+                          { animal.name }
+                        </Link>
+                        )}
+                    )
+                }
+      </div>
+    </>
+)
+}
+
+
+/*
+ <>
       <div className="buttonDiv">
       <button onClick={
         () => history.push("/animals/create")
@@ -47,9 +71,7 @@ export const AnimalList = () => {
       }
       </div>
     </>
-)
-}
-
+*/
 
 /*
 return (

@@ -20,7 +20,7 @@
     list-style-type: none;
 }
 
-a {
+.navbar a {
     color: white;
     font-size: 18px;
 }

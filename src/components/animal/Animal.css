@@ -16,6 +16,12 @@
     margin-right: 15%;
     /* border: 2px solid blue; */
   }
+
+  .animalsDiv a {
+    text-decoration: none;
+    color: gray;
+    font-size: 18px;
+  }
   
   .animal {
       flex-basis: 28%;
