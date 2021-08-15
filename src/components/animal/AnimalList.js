@@ -33,9 +33,14 @@ export const AnimalList = () => {
                 {
                     animals.map(animal => {
                       return ( 
+                      <>
+                      <div className="link_p_div">
                       <Link to={`/animals/detail/${animal.id}`} key={animal.id}>
                           { animal.name }
-                        </Link>
+                      </Link> 
+                      <p>{animal.breed}</p>
+                      </div>
+                      </>
                         )}
                     )
                 }

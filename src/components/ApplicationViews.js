@@ -6,9 +6,11 @@ import { LocationForm } from "./location/LocationForm"
 import {AnimalProvider} from "./animal/AnimalProvider"
 import { AnimalList } from "./animal/AnimalList"
 import { AnimalForm } from "./animal/AnimalForm"
+import { AnimalDetail } from "./animal/AnimalDetail"
 import { EmployeeProvider } from "./employee/EmployeeProvider"
 import { EmployeeList } from "./employee/EmployeeList"
 import { EmployeeForm } from "./employee/EmployeeForm"
+import { EmployeeDetail } from "./employee/EmployeeDetail"
 import { CustomerProvider } from "./customer/CustomerProvider"
 import { CustomerList } from "./customer/CustomerList"
 import { Home } from "./Home"
@@ -49,6 +51,12 @@ export const ApplicationViews = () => {
                     <Route exact path="/employees/create">
                         <EmployeeForm />
                     </Route>
+                                
+                {/* Render the employee details of a specific employee id when http://localhost:8088/employee/3 */}
+                <Route exact path="/employees/detail/:employeeId(\d+)">
+                    <EmployeeDetail />
+                </Route>
+
                     </LocationProvider>
             </EmployeeProvider>
 
@@ -56,10 +64,17 @@ export const ApplicationViews = () => {
             <AnimalProvider>
                 <Route exact path="/animals">
                 <br/><h2>Current Animals</h2>
-                <div className="animalsDiv">
+                <div className="animalsDivParent">
                     <AnimalList />
                 </div>
                 </Route>
+
+                          
+                {/* Render the animal details of a specific animal id when http://localhost:8088/animals/3 */}
+                <Route exact path="/animals/detail/:animalId(\d+)">
+                    <AnimalDetail />
+                </Route>
+
             </AnimalProvider>
             
             {/* Render the add animal form when http://localhost:8088/animals/create */}
