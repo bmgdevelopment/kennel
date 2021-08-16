@@ -5,7 +5,7 @@ import "./Location.css"
 
 export const LocationDetail = () => {
  const { locations, getLocations } = useContext(LocationContext)
- const [ location, setLocation ] = useState({employees: [], animals: [] })   
+ const [ location, setLocation ] = useState({employees: [], animals: [] })   // needed to have empty arrays initialized for later use
 
 const { locationId } = useParams();
 

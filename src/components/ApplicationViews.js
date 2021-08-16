@@ -84,19 +84,24 @@ export const ApplicationViews = () => {
                     <AnimalDetail />
                 </Route>
 
-            </AnimalProvider>
-            
+
             {/* Render the add animal form when http://localhost:8088/animals/create */}
-            <AnimalProvider>
                 <CustomerProvider>
                     <LocationProvider>
-                    <Route exact path="/animals/create">
-                        <AnimalForm />
-                    </Route>
+                        <Route exact path="/animals/create">
+                            <AnimalForm />
+                        </Route>
+
+            {/* Render the edit animal form when http://localhost:8088/animals/edit/2 */}
+                <Route path="/animals/edit/:animalId(\d+)">
+                    <AnimalForm />
+                </Route>
                     </LocationProvider>
                 </CustomerProvider>
+
             </AnimalProvider>
             
+          
 
             {/* Render the customer list when http://localhost:8088/customers */}
             <CustomerProvider>

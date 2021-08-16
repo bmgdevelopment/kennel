@@ -10,7 +10,7 @@ export const AnimalContext = createContext()
 // This component establishes what data can be used.
 export const AnimalProvider = (props) => {
     const [animals, setAnimals] = useState([]) // We will useState to hold and set the array of animals.
-
+    let foundAnimalObj = {}; // 🤓 NEEDED AN EMPTY ANIMAL OBJECT
 
     const getAnimals = () => {
         return fetch("http://localhost:8088/animals?_expand=customer&_expand=location&_sort=locationId")
@@ -29,6 +29,30 @@ export const AnimalProvider = (props) => {
         .then(getAnimals) // similar action to .then((res) => getAnimals(res))
     }
 
+    const releaseAnimal = animalId => {
+        return fetch(`http://localhost:8088/animals/${animalId}`, {
+            method: "DELETE"
+        })
+            .then(getAnimals)
+    }
+// 🤓 NEEDED TO HAVE GETANIMALBYID FUNCTION TO EXPOSE TO PROVIDER; SEE PROVIDER BELOW
+    const getAnimalById = (animalId) => {
+        return fetch(`http://localhost:8088/animals/${animalId}`)
+        .then(res => res.json())
+        .then({ foundAnimalObj })
+    }
+    
+    const updateAnimal = animal => {
+        return fetch(`http://localhost:8088/animals/${animal.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(animal)
+        })
+          .then(getAnimals)
+      }      
+
     /*
         You return a context provider which has the
         `animals` state, `getAnimals` function,
@@ -37,7 +61,7 @@ export const AnimalProvider = (props) => {
     */
     return (
         <AnimalContext.Provider value={
-            {animals, getAnimals, addAnimal} //object including info in export {animals:animals,  getAnimals: getAnimals function, addAnimal: addAnimal function} 
+            {animals, getAnimals, addAnimal, releaseAnimal, updateAnimal, getAnimalById} //object including info in export {animals:animals,  getAnimals: getAnimals function, addAnimal: addAnimal function} ETC... 
     }> 
             {props.children}
         </AnimalContext.Provider>
