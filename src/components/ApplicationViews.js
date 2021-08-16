@@ -3,6 +3,7 @@ import { Route } from "react-router-dom"
 import { LocationProvider } from "./location/LocationProvider"
 import { LocationList } from "./location/LocationList"
 import { LocationForm } from "./location/LocationForm"
+import { LocationDetail } from "./location/LocationDetail"
 import {AnimalProvider} from "./animal/AnimalProvider"
 import { AnimalList } from "./animal/AnimalList"
 import { AnimalForm } from "./animal/AnimalForm"
@@ -30,10 +31,18 @@ export const ApplicationViews = () => {
                 <br/><h2>Current Locations</h2>
                     <LocationList />
                 </Route>
-            </LocationProvider>
+     
+                {/* Render the location details of a specific location id when http://localhost:8088/location/3 */}
+                <AnimalProvider>
+                <EmployeeProvider>
+                    <Route exact path="/locations/detail/:locationId(\d+)">
+                        <LocationDetail />
+                    </Route>
+                </EmployeeProvider>
+                </AnimalProvider>
 
             {/* Render the create location form when http://localhost:8088/locations/create */}
-            <LocationProvider>
+         
                 <Route  exact path="/locations/create">
                     <LocationForm /> 
                 </Route>

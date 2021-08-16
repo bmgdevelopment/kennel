@@ -30,20 +30,20 @@ export const AnimalList = () => {
       </div>
 
       <div className="animalsDiv">
-                {
-                    animals.map(animal => {
-                      return ( 
-                      <>
-                      <div className="link_p_div">
-                      <Link to={`/animals/detail/${animal.id}`} key={animal.id}>
-                          { animal.name }
-                      </Link> 
-                      <p>{animal.breed}</p>
-                      </div>
-                      </>
-                        )}
-                    )
-                }
+          {
+            animals.map(animal => {
+              return ( 
+              <>
+                <div className="link_p_div">
+                  <Link to={`/animals/detail/${animal.id}`} key={animal.id}>
+                      { animal.name }
+                  </Link> 
+                  <p>{animal.breed}</p>
+                </div>
+              </>
+                )}
+            )
+          }
       </div>
     </>
 )

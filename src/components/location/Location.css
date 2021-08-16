@@ -16,6 +16,29 @@
       border: 1px solid goldenrod;
   }
 
+
+.sortedSection {
+  text-decoration: none;
+  color: gray;
+  font-size: 16px;
+  flex-basis: 28%;
+  margin: 1em;
+  padding: 1em;
+  border: 1px solid goldenrod;
+}
+
+.sortedSection h3 {
+  text-decoration: none;
+  color: rgb(172, 127, 14);
+  font-size: 22px;
+  font-style: bold;
+}
+.sortedSection h4 {
+  text-decoration: none;
+  color: rgb(34, 34, 32);
+  font-style: bold;
+  justify-content: left;
+}
   
   .locationsDiv {
     display: flex;
