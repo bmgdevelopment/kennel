@@ -19,12 +19,15 @@ import { Home } from "./Home"
 export const ApplicationViews = () => {
     return (
         <>
-
+            {/* HOME */}
+            {/*------*/}
             {/* Render the Home module when http://localhost:8088/ */}
                 <Route exact path="/">
                     <Home />      
                 </Route>
 
+            {/* LOCATION */}
+            {/*-----------*/}
             {/* Render the location list when http://localhost:8088/locations */}
             <LocationProvider>
                 <Route  exact path="/locations">
@@ -48,6 +51,8 @@ export const ApplicationViews = () => {
                 </Route>
             </LocationProvider>
 
+            {/* EMPLOYEE PROIVDER */}
+            {/*-------------------*/}
             {/* Render the employee list when http://localhost:8088/employee */}
             <EmployeeProvider>
                 <Route exact path="/employees">
@@ -56,12 +61,19 @@ export const ApplicationViews = () => {
                 </Route>
 
             {/* Render the add employee form when http://localhost:8088/employees/create */}
-                    <LocationProvider>
+                <LocationProvider>
                     <Route exact path="/employees/create">
                         <EmployeeForm />
                     </Route>
                                 
-                {/* Render the employee details of a specific employee id when http://localhost:8088/employee/3 */}
+              {/* Render the edit animal form when http://localhost:8088/animals/edit/2 */}
+                <LocationProvider>  
+                    <Route path="/employees/edit/:employeeId(\d+)">
+                        <EmployeeForm />
+                    </Route>
+                </LocationProvider>
+
+            {/* Render the employee details of a specific employee id when http://localhost:8088/employee/3 */}
                 <Route exact path="/employees/detail/:employeeId(\d+)">
                     <EmployeeDetail />
                 </Route>
@@ -69,6 +81,8 @@ export const ApplicationViews = () => {
                     </LocationProvider>
             </EmployeeProvider>
 
+            {/* ANIMAL PROVIDER */}
+            {/*-----------------*/}
             {/* Render the animal list when http://localhost:8088/animals */}
             <AnimalProvider>
                 <Route exact path="/animals">
@@ -77,7 +91,6 @@ export const ApplicationViews = () => {
                     <AnimalList />
                 </div>
                 </Route>
-
                           
                 {/* Render the animal details of a specific animal id when http://localhost:8088/animals/3 */}
                 <Route exact path="/animals/detail/:animalId(\d+)">
@@ -101,8 +114,8 @@ export const ApplicationViews = () => {
 
             </AnimalProvider>
             
-          
-
+            {/* CUSTOMER PROVIDER */}
+            {/*-------------------*/}
             {/* Render the customer list when http://localhost:8088/customers */}
             <CustomerProvider>
                 <Route path="/customers">

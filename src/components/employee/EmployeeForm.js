@@ -1,12 +1,21 @@
 import React, { useContext, useEffect, useState } from "react"
 import { LocationContext } from "../location/LocationProvider"
 import { EmployeeContext } from "../employee/EmployeeProvider"
-import { useHistory } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import "./Employee.css"
+
+/*
+STEPS TO EDIT FORM
+1: CREATE GETEMPLOYEEBYID COMPONENT IN EMPLOYEEPROVIDER.JS AND EXPOSE COMPONENT TO EMPLOYEECONTEXT.PROVIDER
+2: CREATE UPDATEEMPLOYEE COMPONENT IN EMPLOYEEPROVIDER.JS AND EXPOSE COMPONENT TO EMPLOYEECONTEXT.PROVIDER
+3: IMPORT GETEMPLOYEEBYID IN USECONTEXT(EMPLOYEECONTEXT)
+4: CREATE BUTTONS TO EDIT CURRENT EMPLOYEE WHILE VIEWING ONE EMPLOYEE IN EMPLOYEEDETAIL.JS
+5: 
+*/
 
 export const EmployeeForm = () => {
 const { locations, getLocations } = useContext(LocationContext)
-const { addEmployee } = useContext(EmployeeContext)
+const { addEmployee, getEmployeeById, updateEmployee } = useContext(EmployeeContext)
 
 
 const [employee, setEmployee] = useState({
@@ -15,11 +24,10 @@ const [employee, setEmployee] = useState({
 })
 
 const history = useHistory()
+const [isLoading, setIsLoading] = useState(true)
 
-useEffect(() => {
-    getLocations()
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [])
+const {employeeId} = useParams()
+
 
 const handleControlledInputChange = (e) => {
     const newEmployee = { ...employee }
@@ -28,21 +36,44 @@ const handleControlledInputChange = (e) => {
 }
 
 const handleClickSaveEmployee = (e) => {
-    e.preventDefault()
 
     const locationId = parseInt(employee.locationId)
 
-    if (locationId > 0 && employee.name.length > 0 ) {
-        const newEmployee = {
-            name: employee.name,
-            locationId: locationId
-        }
-        addEmployee(newEmployee)
-        .then(() => history.push("/employees"))
+    if (locationId === 0 || employee.name === "") {
+       window.alert("Please enter an employee name and select an employee location")
     } else {
-        window.alert("Please enter an employee name and select an employee location")
+        setIsLoading(true)
+        if (employeeId) {
+            updateEmployee({
+                id: employee.id,
+                name: employee.name,
+                locationId: locationId
+            })
+            .then(() => history.push(`/employees/detail/${employee.id}`))
+        } else {
+            addEmployee({
+                name: employee.name,
+                locationId: locationId
+            })
+            .then(() => history.push("/employees"))
+        }
     }
 }
+
+    useEffect(() => {
+        getLocations().then(() => {
+            if (employeeId) {
+                getEmployeeById(employeeId)
+                .then(employee => {
+                    setEmployee(employee)
+                    setIsLoading(false)
+                })
+            } else {
+                setIsLoading(false)
+            }        
+        })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
 return (
     <form className="employeeForm">
@@ -71,8 +102,13 @@ return (
             </div>
         </fieldset>
 
-        <button className="btn btn-primary" onClick={handleClickSaveEmployee}>
-            Save Employee
+        <button className="btn btn-primary" 
+        disabled={isLoading}
+        onClick={e => {
+            e.preventDefault()
+            handleClickSaveEmployee()
+            }}>
+            {employeeId ? <>Save Employee </> : <> Add Employee </> }
         </button>
     </form>
 )
