@@ -22,6 +22,7 @@
   font-size: 16px;
   flex-basis: 28%;
   margin: 1em;
+  width: 250px;
   padding: 1em;
   border: 1px solid goldenrod;
 }

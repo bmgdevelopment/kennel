@@ -12,7 +12,12 @@ export const AnimalForm = () => {
 
 
     //for edit, hold on to state of animal in this view
-    const [animal, setAnimal] = useState({})
+    const [animal, setAnimal] = useState({
+          name: "",
+          breed: "",
+          locationId: 0,
+          customerId: 0
+        });
     //wait for data before button is active
     const [isLoading, setIsLoading] = useState(true);
 
@@ -33,29 +38,32 @@ export const AnimalForm = () => {
     }
 
     const handleSaveAnimal = () => {
-      if (parseInt(animal.locationId) === 0) {
-          window.alert("Please select a location")
+
+      const locationId = parseInt(animal.locationId)
+      const customerId = parseInt(animal.customerId)
+      
+      if (locationId === 0  || customerId === 0 || animal.name === "" || animal.breed === "") {
+            window.alert("Please place the animal name & breed then select a location and a customer from the drop down lists")
       } else {
         //disable the button - no extra clicks
         setIsLoading(true);
-        if(animalId){
+        if(animalId) {
           //PUT - update
           updateAnimal({
               id: animal.id,
               name: animal.name,
               breed: animal.breed, // 🤓 NEEDED TO ADD
-              locationId: parseInt(animal.locationId),
-              customerId: parseInt(animal.customerId)
+              locationId: locationId,
+              customerId: customerId
           })
           .then(() => history.push(`/animals/detail/${animal.id}`))
-        }else {
+        } else {
           //POST - add
-          // 🤓 NOT WORKING PROPERLY
           addAnimal({
-              name: animal.name,
-              breed: animal.breed,// 🤓 NEEDED TO ADD
-              locationId: parseInt(animal.locationId),
-              customerId: parseInt(animal.customerId)
+            name: animal.name,
+            breed: animal.breed,// 🤓 NEEDED TO ADD
+            locationId: locationId,
+            customerId: customerId
           })
           .then(() => history.push("/animals"))
         }
@@ -75,6 +83,7 @@ export const AnimalForm = () => {
           setIsLoading(false)
         }
       })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     //since state controlls this component, we no longer need
@@ -95,8 +104,8 @@ export const AnimalForm = () => {
 
         <fieldset> {/* 🤓 NEEDED TO ADD*/}
           <div className="form-group">
-          <label htmlFor="name">Animal breed:</label>
-            <input type="text" id="breed" required className="form-control" placeholder="Animal breed" value={animal.breed} onChange={handleControlledInputChange} />
+          <label htmlFor="animalBreed">Animal breed:</label>
+            <input type="text" id="animalBreed" name="breed" required className="form-control" placeholder="Animal breed" value={animal.breed} onChange={handleControlledInputChange} />
           </div>
         </fieldset>
 
