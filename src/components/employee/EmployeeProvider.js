@@ -1,6 +1,7 @@
 import React, { useState, createContext } from "react" //This code imports the main React library, and two functions that it exports.
 
 export const EmployeeContext = createContext()
+
 export const EmployeeProvider = (props) => {
     const [employees, setEmployees] = useState([])
 

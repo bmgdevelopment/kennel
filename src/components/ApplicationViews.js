@@ -44,8 +44,12 @@ export const ApplicationViews = () => {
                 </EmployeeProvider>
                 </AnimalProvider>
 
+                  {/* Render the edit location form when http://localhost:8088/locations/edit/2 */}
+                    <Route exact path="/locations/edit/:locationId(\d+)">
+                        <LocationForm />
+                    </Route>
+
             {/* Render the create location form when http://localhost:8088/locations/create */}
-         
                 <Route  exact path="/locations/create">
                     <LocationForm /> 
                 </Route>
@@ -66,7 +70,7 @@ export const ApplicationViews = () => {
                         <EmployeeForm />
                     </Route>
                                 
-              {/* Render the edit animal form when http://localhost:8088/animals/edit/2 */}
+              {/* Render the edit employee form when http://localhost:8088/employees/edit/2 */}
                 <LocationProvider>  
                     <Route path="/employees/edit/:employeeId(\d+)">
                         <EmployeeForm />

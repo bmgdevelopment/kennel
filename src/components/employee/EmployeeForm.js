@@ -10,7 +10,8 @@ STEPS TO EDIT FORM
 2: CREATE UPDATEEMPLOYEE COMPONENT IN EMPLOYEEPROVIDER.JS AND EXPOSE COMPONENT TO EMPLOYEECONTEXT.PROVIDER
 3: IMPORT GETEMPLOYEEBYID IN USECONTEXT(EMPLOYEECONTEXT)
 4: CREATE BUTTONS TO EDIT CURRENT EMPLOYEE WHILE VIEWING ONE EMPLOYEE IN EMPLOYEEDETAIL.JS
-5: 
+5: MAKE SURE TO LINK PROPER INFO TO INVOKED ADD OR EDIT COMPONENTS
+6: MAKE SURE TO HAVE USESTATE HOLD THE API INFO
 */
 
 export const EmployeeForm = () => {
@@ -108,7 +109,7 @@ return (
             e.preventDefault()
             handleClickSaveEmployee()
             }}>
-            {employeeId ? <>Save Employee </> : <> Add Employee </> }
+            {employeeId ? <> Save Employee </> : <> Add Employee </> }
         </button>
     </form>
 )
