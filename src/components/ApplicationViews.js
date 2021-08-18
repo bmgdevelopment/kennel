@@ -8,6 +8,7 @@ import {AnimalProvider} from "./animal/AnimalProvider"
 import { AnimalList } from "./animal/AnimalList"
 import { AnimalForm } from "./animal/AnimalForm"
 import { AnimalDetail } from "./animal/AnimalDetail"
+import { AnimalSearch } from "./animal/AnimalSearch"
 import { EmployeeProvider } from "./employee/EmployeeProvider"
 import { EmployeeList } from "./employee/EmployeeList"
 import { EmployeeForm } from "./employee/EmployeeForm"
@@ -93,6 +94,7 @@ export const ApplicationViews = () => {
                 <br/><h2>Current Animals</h2>
                 <div className="animalsDivParent">
                     <AnimalList />
+                    <AnimalSearch />
                 </div>
                 </Route>
                           

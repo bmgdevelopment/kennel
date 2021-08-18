@@ -8,43 +8,43 @@ import "./Location.css"
 export const LocationList = () => {
     const { locations, getLocations } = useContext(LocationContext) //the function using the LocationContext deconstructs the arguments content/context
     const history = useHistory()
-    
+
     useEffect(() => {
         console.log("LocationList: useEffect - getLocations")
         getLocations()
     }, [])
-    
+
     return (
         <>
-         <div className="wrapperDiv">
-        <div className="locationBtnDiv">
-            <button onClick={
-                () => history.push("/locations/create")
-            }>
-                Add Location
-            </button>
-        </div>
+            <div className="wrapperDiv" key="locationWrapDiv">
+                <div className="locationBtnDiv" key="locationBtnDiv">
+                    <button key="locationCreateBtn" onClick={
+                        () => history.push("/locations/create")
+                    }>
+                        Add Location
+                    </button>
+                </div>
 
-        <div className="locationsDiv">
-        {
-            locations.map(location => {
-                return (
-                   <>
-                     <div className="link_p_div">
-                      <Link to={`/locations/detail/${location.id}`} key={location.id}>
-                          { location.name }
-                      </Link> 
-                      <p>{location.address}</p>
-                      <p>{location.employees.length} employees</p>
-                      <p>{location.animals.length} animals</p>
-                      </div>
-                   </>
-                )
-            })
-        }
-        </div>
-        </div>
-    </>
+                <div className="locationsDiv" key="locationsDiv">
+                    {
+                        locations.map(location => {
+                            return (
+                                <>
+                                    <div className="link_p_div" key={`locationLinkDiv--${location.id}`}>
+                                        <Link to={`/locations/detail/${location.id}`} key={location.id}>
+                                            {location.name}
+                                        </Link>
+                                        <p key={`locationAddress--${location.id}`}>{location.address}</p>
+                                        <p key={`locationEmployeesLength--${location.id}`}>{location.employees.length} employees</p>
+                                        <p key={`locationAnimalsLength--${location.id}`}>{location.animals.length} animals</p>
+                                    </div>
+                                </>
+                            )
+                        })
+                    }
+                </div>
+            </div>
+        </>
     )
 }
 

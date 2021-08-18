@@ -13,16 +13,28 @@
     justify-content: space-around;
     flex-direction: row;
     order: -1;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 8%;
+    margin-right: 8%;
     /* border: 2px solid blue; */
   }
+
+.animalSearchDiv {
+  display: flex;
+  justify-content: center;
+  order: -2;
+  font-size: 18px;
+  /* border: 2px solid green; */
+}
+
+.input--wide {
+  margin-left: 10px;
+}
 
 .animalsDivParent {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    flex-direction: row;
+    flex-direction: column;
     order: -1;
     margin-left: 10%;
     margin-right: 10%;
@@ -37,7 +49,7 @@
   }
 
   .animal__name {
-    color: rgb(172, 127, 14);
+    color: rgb(172, 127, 14);    
     font-size: 22px;
     font-style: bold;
     margin-top: -2px;
@@ -69,8 +81,9 @@
   
   .animalSection {
       flex-basis: 28%;
-      margin: 5em 10%;
+      margin: 1em 3%;
       padding: 1em;
+      width: 240px;
       border: 1px solid goldenrod;
   }
 
@@ -80,7 +93,7 @@
       justify-content: center;
       order: 1;
       margin-top: 2%;
-      /* border: 2px solid green; */
+      /* border: 2px solid pink; */
   }
 
   .animalForm {

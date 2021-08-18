@@ -3,7 +3,7 @@ import { AnimalContext } from "./AnimalProvider"
 import { useParams, useHistory  } from "react-router-dom"
 import "./Animal.css"
 
-export const AnimalDetail = () => {
+export const AnimalDetail = (props) => {
     const { animals, releaseAnimal } = useContext(AnimalContext)
     const [ animal, setAnimal ] = useState({ location: {}, customer: {} })
     const history = useHistory()
@@ -23,7 +23,7 @@ export const AnimalDetail = () => {
     }, [animalId])
 
     const handleRelease = () => {
-        releaseAnimal(animal.id)
+        releaseAnimal(props.animal.id)
           .then(() => {
             history.push("/animals")
           })
@@ -31,13 +31,13 @@ export const AnimalDetail = () => {
 
     return (
     <>
-        <section className="animalSection sortedSection">
-            <h3 className="animal__name">{ animal.name }</h3>
-            <div className="animal__breed">{ animal.breed }</div>
-            <div className="animal__location">Location: { animal.location.name }</div>
-            <div className="animal__owner">Customer: { animal.customer.name }</div><br/>
+        <section className="animalSection">
+            <h3 className="animal__name">{ props.animal.name }</h3>
+            <div className="animal__breed">{ props.animal.breed }</div>
+            <div className="animal__location">Location: { props.animal.location.name }</div>
+            <div className="animal__owner">Customer: { props.animal.customer.name }</div><br/>
         <button onClick={() => {
-            history.push(`/animals/edit/${animal.id}`)
+            history.push(`/animals/edit/${props.animal.id}`)
         }}>Edit</button>
         <button onClick={handleRelease}>Release Animal</button>
         </section>
