@@ -17,13 +17,17 @@ export const AnimalDetail = (props) => {
 
     useEffect(() => {
         //need getAnimals() in order to capture animals info
-        const thisAnimal = animals.find(a => a.id === parseInt(animalId)) || { location: {}, customer: {} }
-        setAnimal(thisAnimal)
+        if (props.animal) {
+            setAnimal(props.animal)
+        } else {
+            const thisAnimal = animals.find(a => a.id === parseInt(animalId)) || { location: {}, customer: {} }
+            setAnimal(thisAnimal)
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [animalId])
 
     const handleRelease = () => {
-        releaseAnimal(props.animal.id)
+        releaseAnimal(animal.id)
           .then(() => {
             history.push("/animals")
           })
@@ -32,12 +36,12 @@ export const AnimalDetail = (props) => {
     return (
     <>
         <section className="animalSection">
-            <h3 className="animal__name">{ props.animal.name }</h3>
-            <div className="animal__breed">{ props.animal.breed }</div>
-            <div className="animal__location">Location: { props.animal.location.name }</div>
-            <div className="animal__owner">Customer: { props.animal.customer.name }</div><br/>
+            <h3 className="animal__name">{ animal.name }</h3>
+            <div className="animal__breed">{ animal.breed }</div>
+            <div className="animal__location">Location: { animal.location.name }</div>
+            <div className="animal__owner">Customer: { animal.customer.name }</div><br/>
         <button onClick={() => {
-            history.push(`/animals/edit/${props.animal.id}`)
+            history.push(`/animals/edit/${animal.id}`)
         }}>Edit</button>
         <button onClick={handleRelease}>Release Animal</button>
         </section>
