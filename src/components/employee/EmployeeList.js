@@ -30,7 +30,7 @@ export const EmployeeList = () => {
 
             <div className="employeesDiv">
                 <section className="employees">
-                {
+                { 
                     employees.map(employee => {
                         return (
                            <div className="link_p_div" key={`employeeLinkDiv--${employee.id}`}>

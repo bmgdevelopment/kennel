@@ -6,18 +6,18 @@ export const LocationProvider = (props) => {
     const [locations, setLocations] = useState([])
 
     const getLocations = () => {
-        return fetch("http://localhost:8088/locations?_embed=employees&_embed=animals")
+        return fetch("http://localhost:8001/locations?_embed=employees&_embed=animals")
         .then(res => res.json())
         .then(setLocations)
     }
 
     const getLocationById = (locationId) => {
-        return fetch(`http://localhost:8088/locations/${locationId}`)
+        return fetch(`http://localhost:8001/locations/${locationId}`)
         .then(res => res.json())
     }
  
     const updateLocation = (location) => {
-        return fetch(`http://localhost:8088/locations/${location.id}`, {
+        return fetch(`http://localhost:8001/locations/${location.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -28,7 +28,7 @@ export const LocationProvider = (props) => {
     }
 
     const addLocation = locationObj => {
-        return fetch("http://localhost:8088/locations", {
+        return fetch("http://localhost:8001/locations", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

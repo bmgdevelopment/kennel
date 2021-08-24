@@ -13,13 +13,13 @@ export const AnimalProvider = (props) => {
     const [ searchTerms, setSearchTerms ] = useState("")
 
     const getAnimals = () => {
-        return fetch("http://localhost:8088/animals?_expand=customer&_expand=location&_sort=locationId")
+        return fetch("http://localhost:8001/animals?_expand=customer&_expand=location&_sort=locationId")
         .then(res => res.json())
         .then(setAnimals) // similar action to .then((res) => setAnimals(res))
     }
 
     const addAnimal = animalObj => {
-        return fetch("http://localhost:8088/animals", {
+        return fetch("http://localhost:8001/animals", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -30,20 +30,20 @@ export const AnimalProvider = (props) => {
     }
 
     const releaseAnimal = animalId => {
-        return fetch(`http://localhost:8088/animals/${animalId}`, {
+        return fetch(`http://localhost:8001/animals/${animalId}`, {
             method: "DELETE"
         })
             .then(getAnimals)
     }
 // 🤓 NEEDED TO HAVE GETANIMALBYID FUNCTION TO EXPOSE TO PROVIDER; SEE PROVIDER BELOW
     const getAnimalById = (animalId) => {
-        return fetch(`http://localhost:8088/animals/${animalId}`)
+        return fetch(`http://localhost:8001/animals/${animalId}`)
         .then(res => res.json())
         // .then({ foundAnimalObj }) // don't need bc it's redundant
     }
     
     const updateAnimal = animal => {
-        return fetch(`http://localhost:8088/animals/${animal.id}`, {
+        return fetch(`http://localhost:8001/animals/${animal.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"
