@@ -1,7 +1,7 @@
 import React from "react"
 import { AnimalProvider } from "./animal/AnimalProvider"
 import { AnimalList } from "./animal/AnimalList"
-import { AnimalSearch} from "./animal/AnimalSearch"
+import { AnimalSearch } from "./animal/AnimalSearch"
 import { CustomerProvider } from "./customer/CustomerProvider"
 import { CustomerList } from "./customer/CustomerList"
 import { EmployeeProvider } from "./employee/EmployeeProvider"
@@ -12,47 +12,56 @@ import "./Kennel.css"
 
 export const Home = () => (
     <>
-        <h1 className="h1__title">Nashville Kennels</h1>
-        <div className="heading__text">
-            <small>Loving care when you're not there.</small>
-            <address>
-                <div>Visit Us at the Nashville North Location</div>
-                <div>500 Puppy Way</div>
-            </address>
+        <div className="div-1 box">
+            <h1 className="h1__title">Nashville Kennels 🐾</h1>
+            <div className="heading__text">
+                <p className="slogan">Loving care when you're not there.</p>
+                <address>
+                    <div>Visit Us at the Nashville North Location</div>
+                    <div>500 Puppy Way</div>
+                </address>
+            </div>
         </div>
 
-        <h2>Animals</h2>
-        <article className="animals">
-            <CustomerProvider>
+        <div className="div-2 box">
+            <h2 className="h2-home">Animals</h2>
+            <article className="animals">
+                <CustomerProvider>
+                    <LocationProvider>
+                        <AnimalProvider>
+                            <AnimalSearch />
+                            <AnimalList />
+                        </AnimalProvider>
+                    </LocationProvider>
+                </CustomerProvider>
+            </article>
+        </div>
+
+        <div className="div-3 box">
+            <h2 className="h2-home">Employees </h2>
+            <article className="employees">
+                <EmployeeProvider >
+                    <EmployeeList />
+                </EmployeeProvider >
+            </article>
+        </div>
+
+        <div className="div-4 box">
+            <h2 className="h2-home">Locations</h2>
+            <article className="locations">
                 <LocationProvider>
-                    <AnimalProvider>
-                        <AnimalSearch />
-                        <AnimalList />
-                    </AnimalProvider>
-                </LocationProvider>
-            </CustomerProvider>
-        </article>
+                    <LocationList />
+                </LocationProvider >
+            </article>
+        </div>
 
-        <h2>Employees</h2>
-        <article className="employees">
-            <EmployeeProvider >
-                <EmployeeList />
-            </EmployeeProvider >
-        </article>
-
-        <h2>Locations</h2>
-        <article className="locations">
-            <LocationProvider>
-                <LocationList />
-            </LocationProvider >
-        </article>
-
-        <h2>Customers</h2>
-        <article className="customers">
-            <CustomerProvider>
-                <CustomerList />
-            </CustomerProvider>
-
-        </article>
+        <div className="div-5 box">
+            <h2 className="h2-home">Customers</h2>
+            <article className="customers">
+                <CustomerProvider>
+                    <CustomerList />
+                </CustomerProvider>
+            </article>
+        </div>
     </>
 )

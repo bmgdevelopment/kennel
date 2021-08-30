@@ -1,22 +1,24 @@
 .navBarDiv {
     /* border: 2px solid rgb(61, 114, 206); */
-    background-color: rgb(218, 165, 32);
+    background-color: rgb(70, 69, 68);
     margin-right: auto;
     margin-left: auto;
     padding-top: 7px;
     padding-bottom: 10px;
     position: static;
+    padding-right: 100px;
+    padding-left: 100px;
 }
 
 .navbar {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: left;
+    justify-content: space-around;
     /* border: 2px solid green; */
 }
 
 .navbar__item {
-    flex-basis: 20%;
+    /* flex-basis: 20%; */
     list-style-type: none;
 }
 
